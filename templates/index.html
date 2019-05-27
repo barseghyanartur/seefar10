@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    <li>
+        <a href="/api/predict-sample-image/?image=examples/airplane01.jpg">Single image</a>
+    </li>
+    <li>
+        <a href="/list-predict-sample-images/">List predict sample images</a>
+    </li>
+    <li>
+        <a href="/list-predict-sample-images/?=airplane">List predict sample images for given category</a>
+    </li>
+</ul>
+{% endblock content %}

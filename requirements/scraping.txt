@@ -1,0 +1,2 @@
+google-images-download==2.4.2
+PyVirtualDisplay==0.2.1

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>List predict sample images</h1>
+
+    <ul>
+        <li>Correct predictions: {{ correct_predictions }}</li>
+        <li>Total predictions: {{ total_predictions }}</li>
+        <li>Percentage: {{ correct_percentage }}</li>
+    </ul>
+
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Prediction</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      {% for prediction in predictions %}
+        <tr>
+            <td>
+                <img src="/static/{{ prediction.image_path }}" class="img-thumbnail" style="max-width: 300px; max-length: 300px;" />
+            </td>
+            <td>
+
+                {% for label in prediction.labels %}
+                    <button class="btn {% if label.correct %} btn-success {% if loop.first %} btn-lg {% else %} btn-sm {% endif %}{% else %} btn-sm {% if label.probability > 0 %} btn-warning {% endif %}{% endif %}">{{ label.as_text_with_percentage_only }}</button>
+                {% endfor %}
+
+            </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock content %}
